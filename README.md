@@ -7,6 +7,8 @@ This project combines a Python face-tracking app with an ESP32 sketch that reads
 <video controls src="demo/face_computer_view.mp4" title="Demo Video"></video>
 [![Face Tracker Demo](https://img.youtube.com/vi/c_oRC56zAxI/maxresdefault.jpg)](https://youtu.be/c_oRC56zAxI)
 
+## Hardware Setup
+
 ![example](example.jpeg)
 
 ## Project Files
