@@ -54,8 +54,6 @@ void loop()
       if (httpResponseCode > 0)
       {
         String payload = http.getString();
-        // Serial.println(httpResponseCode);
-        // Serial.println(payload);
 
         DynamicJsonDocument doc(1024);
         deserializeJson(doc, payload);

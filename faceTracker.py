@@ -44,7 +44,6 @@ if __name__ == "__main__":
         annotated_frame = results[0].plot()
         cx = mirrored_frame.shape[1] // 2
         cy = mirrored_frame.shape[0] // 2
-        # print(mirrored_frame.shape[1], mirrored_frame.shape[0])
 
         for box in results[0].boxes:
             x1, y1, x2, y2 = box.xyxy[0].tolist()
