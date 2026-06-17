@@ -4,10 +4,7 @@ This project combines a Python face-tracking app with an ESP32 sketch that reads
 
 ## Demo Video
 
-[Watch the demo video](face_computer_view.mp4)
-
-<!-- <video controls width="720" src="demo/demo.mp4"></video> -->
-<video controls src="demo/face_computer_view.mp4"></video>
+[Watch the demo video](demo/face_computer_view.mp4)
 
 ## Project Files
 
