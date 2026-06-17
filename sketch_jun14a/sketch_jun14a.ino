@@ -2,13 +2,13 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 #include <ESP32Servo.h>
-#include <secrets.h>
+#include <secrets.example.h>
 
 Servo myServo;
 Servo myServo2;
 
-const char* ssid = WIFI_SSID;
-const char* password = WIFI_PASSWORD;
+const char *ssid = WIFI_SSID;
+const char *password = WIFI_PASSWORD;
 
 // Use the PC's LAN IP here, not the board's IP
 String serverName = SERVER_IP;
