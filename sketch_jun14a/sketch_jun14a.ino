@@ -2,15 +2,16 @@
 #include <HTTPClient.h>
 #include <ArduinoJson.h>
 #include <ESP32Servo.h>
+#include <secrets.example.h>
 
 Servo myServo;
 Servo myServo2;
 
-const char* ssid = "jack off";
-const char* password = "244466666";
+const char *ssid = WIFI_SSID;
+const char *password = WIFI_PASSWORD;
 
 // Use the PC's LAN IP here, not the board's IP
-String serverName = "http://192.168.4.25:8000/face-center";
+String serverName = SERVER_IP;
 
 unsigned long lastTime = 0;
 unsigned long timerDelay = 10;
@@ -20,14 +21,16 @@ float sens = 0.05;
 float error_x = 0.0;
 float error_y = 0.0;
 
-void setup() {
+void setup()
+{
   Serial.begin(115200);
   WiFi.begin(ssid, password);
   myServo.attach(23);
   myServo2.attach(22);
 
   Serial.println("Connecting");
-  while (WiFi.status() != WL_CONNECTED) {
+  while (WiFi.status() != WL_CONNECTED)
+  {
     delay(500);
     Serial.print(".");
   }
@@ -37,15 +40,19 @@ void setup() {
   Serial.println(WiFi.localIP());
 }
 
-void loop() {
-  if ((millis() - lastTime) > timerDelay) {
-    if (WiFi.status() == WL_CONNECTED) {
+void loop()
+{
+  if ((millis() - lastTime) > timerDelay)
+  {
+    if (WiFi.status() == WL_CONNECTED)
+    {
       HTTPClient http;
       http.begin(serverName.c_str());
 
       int httpResponseCode = http.GET();
 
-      if (httpResponseCode > 0) {
+      if (httpResponseCode > 0)
+      {
         String payload = http.getString();
         // Serial.println(httpResponseCode);
         // Serial.println(payload);
@@ -63,15 +70,18 @@ void loop() {
         int vert = map(error_y, -240, 240, 40, 140);
 
         myServo.write(panAngle - 5);
-        myServo2.write(vert);
-        
-      } else {
+        myServo2.write(vert - 5);
+      }
+      else
+      {
         Serial.print("Error code: ");
         Serial.println(httpResponseCode);
       }
 
       http.end();
-    } else {
+    }
+    else
+    {
       Serial.println("WiFi Disconnected");
     }
 
